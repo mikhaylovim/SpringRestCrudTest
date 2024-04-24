@@ -1,0 +1,13 @@
+### Добавление нового элемента
+POST http://localhost:8080/author
+Content-Type: application/json
+
+{
+  "firstName": "Test",
+  "lastName": "Test",
+  "books": [
+    {
+      "title": "Test"
+    }
+  ]
+}

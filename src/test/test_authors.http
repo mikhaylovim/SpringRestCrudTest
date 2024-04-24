@@ -1,0 +1,32 @@
+### Получение всех элементов
+GET http://localhost:8080/author
+
+
+### Получение 1 элемента по id
+GET http://localhost:8080/author/2
+
+
+### Добавление нового элемента
+POST http://localhost:8080/author
+Content-Type: application/json
+
+{
+  "firstName": "Stephen",
+  "lastName": "King",
+  "books": []
+}
+
+
+### Обновление элемента
+PATCH http://localhost:8080/author/2
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Snow",
+  "books": []
+}
+
+
+### Удаление элемента
+DELETE http://localhost:8080/author/3

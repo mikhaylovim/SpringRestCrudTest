@@ -1,0 +1,206 @@
+openapi: 3.0.0
+info:
+  title: Book and Author API
+  description: API for managing authors and books
+  version: "1.0.0"
+servers:
+  - url: 'http://localhost:8080/'
+paths:
+  /example:
+    get:
+      summary: Example endpoint
+      description: This is a new endpoint for demonstration purposes.
+      responses:
+        '200':
+          description: Example endpoint invoked successfully
+  /author/{id}:
+    get:
+      tags:
+        - Author
+      summary: Get an author by ID
+      operationId: getAuthorById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: Unique identifier of the author
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthorDto'
+    patch:
+      tags:
+        - Author
+      summary: Update an author by ID
+      operationId: updateAuthorById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: Unique identifier of the author to update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthorDto'
+      responses:
+        '200':
+          description: Updated successfully
+    delete:
+      tags:
+        - Author
+      summary: Delete an author by ID
+      operationId: deleteAuthorById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: Unique identifier of the author to delete
+      responses:
+        '204':
+          description: Deleted successfully
+  /author:
+    get:
+      tags:
+        - Author
+      summary: Get all authors
+      operationId: getAllAuthors
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AuthorDto'
+    post:
+      tags:
+        - Author
+      summary: Create a new author
+      operationId: createAuthor
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthorDto'
+      responses:
+        '201':
+          description: Created successfully
+  /books/{id}:
+    get:
+      tags:
+        - Book
+      summary: Get a book by ID
+      operationId: getBookById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: Unique identifier of the book
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookDto'
+    patch:
+      tags:
+        - Book
+      summary: Update a book by ID
+      operationId: updateBookById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: Unique identifier of the book to update
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookDto'
+      responses:
+        '200':
+          description: Updated successfully
+    delete:
+      tags:
+        - Book
+      summary: Delete a book by ID
+      operationId: deleteBookById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+          description: Unique identifier of the book to delete
+      responses:
+        '204':
+          description: Deleted successfully
+  /books:
+    get:
+      tags:
+        - Book
+      summary: Get all books
+      operationId: getAllBooks
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BookDto'
+    post:
+      tags:
+        - Book
+      summary: Create a new book
+      operationId: createBook
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BookDto'
+      responses:
+        '201':
+          description: Created successfully
+components:
+  schemas:
+    AuthorDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+    BookDto:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        title:
+          type: string
+        authorId:
+          type: integer
+          format: int64

@@ -1,0 +1,34 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001
+      author: mim
+      comment: initial creation
+      changes:
+        - createTable:
+            schemaName: test
+            tableName: books
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column: { name: title, type: varchar(255) }
+              - column: { name: author_id, type: bigint }
+              - column: { name: created_dt, type: timestamp }
+              - column: { name: updated_dt, type: timestamp }
+        - createTable:
+            schemaName: test
+            tableName: authors
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column: { name: first_name, type: varchar(255) }
+              - column: { name: last_name, type: varchar(255) }
+              - column: { name: created_dt, type: timestamp }
+              - column: { name: updated_dt, type: timestamp }
