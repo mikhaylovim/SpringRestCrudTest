@@ -3,6 +3,17 @@
         jasypt.encryptor.password=""
         -ea -Dfile.encoding=UTF-8 -Djasypt.encryptor.password=""
 
+# Run
+```shell
+cd ./docker
+```
+```shell
+docker compose up -d
+```
+```shell
+docker compose down
+```
+
 # Actuator
     http://localhost:8080/actuator/info
     http://localhost:8080/actuator/health
